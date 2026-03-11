@@ -3,7 +3,7 @@
 ## Description
 This project recreates the classic video rental store experience in a digital environment, allowing users to browse, rent, and rate movies. The application supports different user roles, such as regular users and administrators, each with dedicated features to interact with the movie catalog and manage the platform.
 The system focuses on providing an intuitive way to explore content while enforcing role-based access and permissions, ensuring a structured and well-managed movie rental experience.
-> This repository contains the Frontend. The Backend (API) can be found in this repository: [videostore-backend](https://github.com/AlbertMedina/5.2-Spring-Framework-Advanced-Nivell3-Backend.git)
+> This repository contains the Frontend. The Backend (API) can be found in this repository: [video-paradiso-backend](https://github.com/AlbertMedina/video-paradiso-backend.git)
 
 ## Tech Stack
 A modern React application bootstrapped with Vite, focused on providing a clean and responsive UI for browsing, renting, and reviewing movies.
@@ -13,9 +13,9 @@ A modern React application bootstrapped with Vite, focused on providing a clean 
 - **Authentication:** JWT tokens stored in localStorage and included in API requests via custom hooks.
 
 ## Installation
-1. Clone repository (https://github.com/AlbertMedina/5.2-Spring-Framework-Advanced-Nivell3-Frontend.git).
+1. Clone repository (https://github.com/AlbertMedina/video-paradiso-frontend.git).
 ```
-git clone https://github.com/AlbertMedina/5.2-Spring-Framework-Advanced-Nivell3-Frontend.git
+git clone https://github.com/AlbertMedina/video-paradiso-frontend.git
 ```
 2. Navigate to project folder.
 ```
