@@ -1,9 +1,9 @@
-# Video Paradiso
+# Video Paradiso (Frontend)
 
 ## Description
 This project recreates the classic video rental store experience in a digital environment, allowing users to browse, rent, and rate movies. The application supports different user roles, such as regular users and administrators, each with dedicated features to interact with the movie catalog and manage the platform.
 The system focuses on providing an intuitive way to explore content while enforcing role-based access and permissions, ensuring a structured and well-managed movie rental experience.
-> This repository contains the Frontend. The Backend (API) can be found in this repository: [video-paradiso-backend](https://github.com/AlbertMedina/video-paradiso-backend.git)
+> This repository contains the Frontend. The Backend (API) can be found in this repository: [video-paradiso-api](https://github.com/AlbertMedina/video-paradiso-api.git)
 
 ## Tech Stack
 A modern React application bootstrapped with Vite, focused on providing a clean and responsive UI for browsing, renting, and reviewing movies.
@@ -19,7 +19,7 @@ git clone https://github.com/AlbertMedina/video-paradiso-frontend.git
 ```
 2. Navigate to project folder.
 ```
-cd videostore
+cd video-paradiso-frontend
 ```
 
 ## Execution
