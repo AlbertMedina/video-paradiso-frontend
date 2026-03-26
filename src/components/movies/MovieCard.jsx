@@ -48,6 +48,9 @@ export default function MovieCard({ movie, onClick }) {
               objectFit: "cover",
               display: "block",
             }}
+            onError={(e) => {
+              e.target.src = defaultPoster;
+            }}
           />
 
           <Box
