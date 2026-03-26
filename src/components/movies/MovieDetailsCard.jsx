@@ -117,6 +117,9 @@ export default function MovieDetailsCard({
                 objectPosition: "center",
                 display: "block",
               }}
+              onError={(e) => {
+                e.target.src = defaultPoster;
+              }}
             />
           </Box>
         </Grid>
