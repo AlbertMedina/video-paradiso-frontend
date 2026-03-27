@@ -47,6 +47,23 @@ export default function Nav() {
               color="inherit"
               component={NavLink}
               to={link.to}
+              sx={{
+                textTransform: "none",
+                transition: "all 0.3s ease",
+                borderRadius: 2,
+                px: 2,
+
+                "&.active": {
+                  bgcolor: "rgba(255, 255, 255, 0.15)",
+                  boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.3)",
+                  color: "#fff",
+                  fontWeight: "bold",
+                },
+
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.05)",
+                },
+              }}
             >
               <Typography variant="body1">{link.label}</Typography>
             </Button>
