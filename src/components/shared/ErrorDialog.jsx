@@ -4,7 +4,6 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  Typography,
 } from "@mui/material";
 
 export default function ErrorDialog({ open, onClose, message }) {

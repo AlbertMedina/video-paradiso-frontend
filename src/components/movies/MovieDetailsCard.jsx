@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { Box, Typography, Grid, IconButton, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -6,6 +8,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+import ImageFallback from "../../components/shared/ImageFallback";
 import ImageButton from "../../components/home/ImageButton";
 import StarRatingDisplay from "../movies/StarRatingDisplay";
 
@@ -25,6 +28,12 @@ export default function MovieDetailsCard({
   onReview,
   onFavourite,
 }) {
+  const [hasPosterError, setHasPosterError] = useState(false);
+
+  useEffect(() => {
+    setHasPosterError(false);
+  }, [movie]);
+
   return (
     <Box
       sx={{
@@ -110,7 +119,7 @@ export default function MovieDetailsCard({
               overflow: "hidden",
               borderRadius: 2,
               boxShadow: 3,
-              maxWidth: 300,
+              width: 300,
             }}
           >
             {isAdmin ? (
@@ -121,6 +130,8 @@ export default function MovieDetailsCard({
                 text={<EditIcon fontSize="x-large" />}
                 onClick={onEditPoster}
               />
+            ) : hasPosterError ? (
+              <ImageFallback />
             ) : (
               <Box
                 component="img"
@@ -133,9 +144,7 @@ export default function MovieDetailsCard({
                   objectPosition: "center",
                   display: "block",
                 }}
-                onError={(e) => {
-                  e.target.src = defaultPoster;
-                }}
+                onError={() => setHasPosterError(true)}
               />
             )}
           </Box>

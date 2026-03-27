@@ -1,10 +1,19 @@
+import { useState, useEffect } from "react";
+
 import { Paper, Typography, Box, ButtonBase } from "@mui/material";
 
+import ImageFallback from "../shared/ImageFallback";
 import StarRatingDisplay from "../movies/StarRatingDisplay";
 
 import defaultPoster from "../../assets/background-movie-default.webp";
 
 export default function MovieCard({ movie, onClick }) {
+  const [hasPosterError, setHasPosterError] = useState(false);
+
+  useEffect(() => {
+    setHasPosterError(false);
+  }, [movie]);
+
   return (
     <ButtonBase
       onClick={onClick}
@@ -38,6 +47,23 @@ export default function MovieCard({ movie, onClick }) {
             position: "relative",
           }}
         >
+          {hasPosterError ? (
+            <ImageFallback />
+          ) : (
+            <Box
+              component="img"
+              src={movie.posterUrl || defaultPoster}
+              alt={movie.title}
+              sx={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
+              onError={() => setHasPosterError(true)}
+            />
+          )}
           <Box
             component="img"
             src={movie.posterUrl || defaultPoster}
