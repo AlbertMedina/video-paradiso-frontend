@@ -7,6 +7,7 @@ import { getAllMovies } from "../../services/api";
 import AuthContext from "../../services/auth.context";
 
 import MovieCarousel from "../../components/home/MovieCarouselButton";
+import ErrorDialog from "../../components/shared/ErrorDialog";
 
 import logo from "../../assets/logo-dark.png";
 
@@ -16,6 +17,9 @@ export default function UserHome() {
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchMovies = async () => {
     if (!token) return;
@@ -71,9 +75,12 @@ export default function UserHome() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        flexGrow: 1,
+        width: "100%",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Box
@@ -83,7 +90,7 @@ export default function UserHome() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: 10,
+          gap: 7,
         }}
       >
         <Box
@@ -92,7 +99,7 @@ export default function UserHome() {
           alt="Video Paradiso Logo"
           sx={{
             aspectRatio: "7 / 2",
-            width: 1200,
+            width: 900,
             objectFit: "cover",
             maxWidth: "100%",
           }}
@@ -101,11 +108,17 @@ export default function UserHome() {
         <MovieCarousel
           movies={movies}
           visibleCount={3}
-          movieWidth={300}
+          movieWidth={230}
           text={"Explore our top-rated movies"}
           onClick={handleCarouselClick}
         />
       </Box>
+
+      <ErrorDialog
+        open={errorDialogOpen}
+        onClose={() => setErrorDialogOpen(false)}
+        message={errorMessage}
+      />
     </Box>
   );
 }

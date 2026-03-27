@@ -8,6 +8,7 @@ import AuthContext from "../../services/auth.context";
 
 import MovieCarousel from "../../components/home/MovieCarouselButton";
 import ImageButton from "../../components/shared/ImageButton";
+import ErrorDialog from "../../components/shared/ErrorDialog";
 
 import logo from "../../assets/logo-dark.png";
 import users from "../../assets/users-button.webp";
@@ -18,6 +19,9 @@ export default function AdminHome() {
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchMovies = async () => {
     if (!token) return;
@@ -77,9 +81,12 @@ export default function AdminHome() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        flexGrow: 1,
+        width: "100%",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Box
@@ -89,7 +96,7 @@ export default function AdminHome() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: 10,
+          gap: 7,
         }}
       >
         <Box
@@ -98,7 +105,7 @@ export default function AdminHome() {
           alt="Video Paradiso Logo"
           sx={{
             aspectRatio: "7 / 2",
-            width: 1200,
+            width: 900,
             objectFit: "cover",
             maxWidth: "100%",
           }}
@@ -114,13 +121,13 @@ export default function AdminHome() {
         >
           <MovieCarousel
             movies={movies}
-            maxWidth={300}
+            movieWidth={230}
             text={"Manage movies"}
             onClick={handleMoviesCarouselClick}
           />
 
           <ImageButton
-            width={300}
+            width={230}
             aspectRatio={"2 / 3"}
             image={users}
             text={"Manage users"}
@@ -128,6 +135,12 @@ export default function AdminHome() {
           />
         </Box>
       </Box>
+
+      <ErrorDialog
+        open={errorDialogOpen}
+        onClose={() => setErrorDialogOpen(false)}
+        message={errorMessage}
+      />
     </Box>
   );
 }
