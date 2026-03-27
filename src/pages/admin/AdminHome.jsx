@@ -6,7 +6,7 @@ import { Box, CircularProgress } from "@mui/material";
 import { getAllMovies } from "../../services/api";
 import AuthContext from "../../services/auth.context";
 
-import MovieCarousel from "../../components/home/MovieCarouselButon";
+import MovieCarousel from "../../components/home/MovieCarouselButton";
 import ImageButton from "../../components/shared/ImageButton";
 
 import logo from "../../assets/logo-dark.png";

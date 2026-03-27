@@ -39,7 +39,7 @@ function CarouselPoster({ movie, movieWidth }) {
   );
 }
 
-export default function MovieCarouselButon({
+export default function MovieCarouselButton({
   movies,
   visibleCount = 1,
   intervalMs = 3000,
