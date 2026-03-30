@@ -1,8 +1,9 @@
 import { Box, Checkbox, Typography } from "@mui/material";
 
-export default function HideUnavailableCheckbox({
+export default function LabelCheckbox({
   checked,
   onChange,
+  label,
   minWidth = 150,
   height = 40,
   fontSize = 16,
@@ -10,23 +11,23 @@ export default function HideUnavailableCheckbox({
   return (
     <Box
       sx={{
+        minWidth,
+        height,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        px: 1.5,
         borderRadius: 2,
         boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
         bgcolor: "#3e0b00",
-        px: 2,
-        py: 1,
-        cursor: "pointer",
         "&:hover": { bgcolor: "#6A1F0F" },
-        minWidth,
-        height,
+        cursor: "pointer",
       }}
       onClick={() => onChange(!checked)}
     >
       <Checkbox
         checked={checked}
+        onClick={(e) => e.stopPropagation()}
         onChange={(e) => onChange(e.target.checked)}
         sx={{
           p: 0,
@@ -46,7 +47,7 @@ export default function HideUnavailableCheckbox({
           whiteSpace: "nowrap",
         }}
       >
-        Hide unavailable
+        {label}
       </Typography>
     </Box>
   );

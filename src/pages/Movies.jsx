@@ -20,7 +20,7 @@ import MovieCard from "../components/movies/MovieCard";
 import Selector from "../components/movies/Selector.jsx";
 import SearchBox from "../components/movies/SearchBox";
 import SortSelector from "../components/movies/SortSelector.jsx";
-import HideUnavailableCheckbox from "../components/movies/HideUnavailableCheckbox.jsx";
+import LabelCheckbox from "../components/movies/LabelCheckbox.jsx";
 import AddMovieCard from "../components/admin/AddMovieCard";
 import AddMovieModal from "../components/admin/AddMovieModal";
 import ErrorDialog from "../components/shared/ErrorDialog";
@@ -187,12 +187,13 @@ export default function Movies() {
             width={150}
           />
 
-          <HideUnavailableCheckbox
+          <LabelCheckbox
             checked={onlyAvailable}
             onChange={(newValue) => {
               setOnlyAvailable(newValue);
               setPage(0);
             }}
+            label="Hide unavailable"
           />
         </Box>
       </Box>
