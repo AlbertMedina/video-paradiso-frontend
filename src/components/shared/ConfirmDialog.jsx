@@ -7,7 +7,13 @@ import {
   Button,
 } from "@mui/material";
 
-export default function ConfirmDialog({ open, text, onConfirm, onCancel }) {
+export default function ConfirmDialog({
+  open,
+  message,
+  fontSize = 16,
+  onConfirm,
+  onCancel,
+}) {
   return (
     <Dialog
       open={open}
@@ -28,8 +34,10 @@ export default function ConfirmDialog({ open, text, onConfirm, onCancel }) {
           pl: 4,
         }}
       >
-        <DialogContentText sx={{ color: "#3e0b00", textAlign: "center" }}>
-          {text}
+        <DialogContentText
+          sx={{ color: "#3e0b00", textAlign: "center", fontSize }}
+        >
+          {message}
         </DialogContentText>
       </DialogContent>
 
@@ -47,6 +55,7 @@ export default function ConfirmDialog({ open, text, onConfirm, onCancel }) {
           onClick={onCancel}
           variant="outlined"
           sx={{
+            fontSize: fontSize * 0.8,
             color: "#3e0b00",
             borderColor: "#3e0b00",
             bgcolor: "#f5f5f5",
@@ -62,6 +71,7 @@ export default function ConfirmDialog({ open, text, onConfirm, onCancel }) {
           onClick={onConfirm}
           variant="contained"
           sx={{
+            fontSize: fontSize * 0.8,
             bgcolor: "#3e0b00",
             color: "#f5f5f5",
             "&:hover": {

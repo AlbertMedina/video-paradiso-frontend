@@ -239,7 +239,7 @@ export default function MovieDetails() {
 
         <ConfirmDialog
           open={confirmDeleteMovieOpen}
-          text="Are you sure you want to delete this movie?"
+          message="Are you sure you want to delete this movie?"
           onConfirm={() => {
             setConfirmDeleteMovieOpen(false);
             handleConfirmDeleteMovie();
@@ -249,7 +249,7 @@ export default function MovieDetails() {
 
         <ConfirmDialog
           open={rentConfirmOpen}
-          text={
+          message={
             hasRented
               ? "Are you sure you want to return this movie?"
               : "Are you sure you want to rent this movie?"
@@ -263,7 +263,7 @@ export default function MovieDetails() {
 
         <ConfirmDialog
           open={confirmDeleteReviewOpen}
-          text="Are you sure you want to delete this review?"
+          message="Are you sure you want to delete this review?"
           onConfirm={() => {
             setConfirmDeleteReviewOpen(false);
             handleConfirmDeleteReview();

@@ -112,7 +112,7 @@ export default function UserDetails() {
 
         <ConfirmDialog
           open={confirmDeleteUserOpen}
-          text="Are you sure you want to delete this user?"
+          message="Are you sure you want to delete this user?"
           onConfirm={() => {
             setConfirmDeleteUserOpen(false);
             handleConfirmDeleteUser();

@@ -6,7 +6,7 @@ import {
   Button,
 } from "@mui/material";
 
-export default function ErrorDialog({ open, onClose, message }) {
+export default function ErrorDialog({ open, onClose, message, fontSize = 16 }) {
   return (
     <Dialog
       open={open}
@@ -27,7 +27,9 @@ export default function ErrorDialog({ open, onClose, message }) {
           pl: 4,
         }}
       >
-        <DialogContentText sx={{ color: "#3e0b00", textAlign: "center" }}>
+        <DialogContentText
+          sx={{ color: "#3e0b00", textAlign: "center", fontSize }}
+        >
           {message}
         </DialogContentText>
       </DialogContent>
@@ -44,6 +46,7 @@ export default function ErrorDialog({ open, onClose, message }) {
           onClick={onClose}
           variant="contained"
           sx={{
+            fontSize: fontSize * 0.8,
             bgcolor: "#3e0b00",
             color: "#f5f5f5",
             "&:hover": {
