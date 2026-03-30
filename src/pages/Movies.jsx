@@ -14,8 +14,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { getAllMovies, getGenres } from "../services/api";
 import AuthContext from "../services/auth.context";
 
+import { capitalizeWords } from "../../utils/stringUtils";
+
 import MovieCard from "../components/movies/MovieCard";
-import GenreSelector from "../components/movies/GenreSelector";
+import Selector from "../components/movies/Selector.jsx";
 import SearchBox from "../components/movies/SearchBox";
 import SortToggle from "../components/movies/SortToggle";
 import HideUnavailableCheckbox from "../components/movies/HideUnavailableCheckbox.jsx";
@@ -123,6 +125,14 @@ export default function Movies() {
 
   if (!movies) return null;
 
+  const genreOptions = [
+    { label: "All Genres", value: "" },
+    ...genres.map((g) => ({
+      label: capitalizeWords(g),
+      value: g,
+    })),
+  ];
+
   return (
     <Box
       sx={{
@@ -152,8 +162,8 @@ export default function Movies() {
             width={300}
           />
 
-          <GenreSelector
-            genres={genres}
+          <Selector
+            options={genreOptions}
             value={genreFilter}
             onChange={(newGenre) => {
               setGenreFilter(newGenre);

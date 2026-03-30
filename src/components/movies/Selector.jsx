@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 
-import { capitalizeWords } from "../../utils/stringUtils";
-
-export default function GenreSelector({
-  genres = [],
+export default function Selector({
+  options = [],
   value,
   onChange,
   minWidth = 150,
@@ -15,10 +13,13 @@ export default function GenreSelector({
 
   const handleOpen = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  const handleSelect = (genre) => {
-    onChange(genre);
+
+  const handleSelect = (val) => {
+    onChange(val);
     handleClose();
   };
+
+  const currentOption = options.find((opt) => opt.value === value);
 
   return (
     <Box
@@ -41,12 +42,13 @@ export default function GenreSelector({
           color: "#f5f5f5",
           "&:hover": { bgcolor: "#6A1F0F" },
           whiteSpace: "nowrap",
+          px: 2,
         }}
       >
         <Typography
           sx={{ fontSize, fontWeight: 500, textAlign: "center", flex: 1 }}
         >
-          {value ? capitalizeWords(value) : "All Genres"}
+          {currentOption ? currentOption.label : "Select..."}
         </Typography>
       </Button>
 
@@ -58,24 +60,22 @@ export default function GenreSelector({
           "& .MuiPaper-root": {
             bgcolor: "#6A1F0F",
             color: "#f5f5f5",
-            minWidth: 150,
+            minWidth,
           },
         }}
       >
-        <MenuItem
-          onClick={() => handleSelect("")}
-          sx={{ fontSize, "&:hover": { bgcolor: "#3e0b00" } }}
-        >
-          All
-        </MenuItem>
-
-        {genres.map((g) => (
+        {options.map((opt) => (
           <MenuItem
-            key={g}
-            onClick={() => handleSelect(g)}
-            sx={{ fontSize, "&:hover": { bgcolor: "#3e0b00" } }}
+            key={opt.value}
+            onClick={() => handleSelect(opt.value)}
+            sx={{
+              fontSize,
+              "&:hover": { bgcolor: "#3e0b00" },
+              bgcolor:
+                opt.value === value ? "rgba(255,255,255,0.1)" : "transparent",
+            }}
           >
-            {capitalizeWords(g)}
+            {opt.label}
           </MenuItem>
         ))}
       </Menu>
