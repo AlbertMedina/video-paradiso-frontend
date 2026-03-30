@@ -80,14 +80,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     if (!token) return;
-
-    let cancelled = false;
-
     fetchMovieDetails();
-
-    return () => {
-      cancelled = true;
-    };
   }, [token, movieId, isUser]);
 
   const fetchReviews = async () => {

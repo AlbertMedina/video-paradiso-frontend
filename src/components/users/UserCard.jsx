@@ -3,38 +3,39 @@ import { Box, Typography } from "@mui/material";
 import userAvatar from "../../assets/user-avatar.webp";
 import { capitalizeWords } from "../../utils/stringUtils";
 
-export default function UserCard({ user, onClick }) {
+export default function UserCard({ user, onClick, width = 300, height = 100 }) {
   if (!user) return null;
 
   return (
     <Box
       onClick={onClick}
       sx={{
-        p: 2,
+        width,
+        height,
+        p: 1.5,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 2,
         bgcolor: "white",
         borderRadius: 2,
         boxShadow: 1,
         color: "#3e0b00",
-        width: "100%",
-        minWidth: 400,
-        display: "flex",
-        flexDirection: "row",
-        gap: 3,
-        alignItems: "center",
-        cursor: "pointer",
         transition: "transform 0.2s, box-shadow 0.2s",
         "&:hover": {
           transform: "translateY(-2px)",
           boxShadow: 4,
         },
+        cursor: "pointer",
       }}
     >
       <Box
         sx={{
-          width: "100%",
+          width: 60,
+          height: 60,
+          flexShrink: 0,
           overflow: "hidden",
-          borderRadius: 2,
-          maxWidth: 100,
+          borderRadius: "50%",
         }}
       >
         <Box
@@ -45,18 +46,22 @@ export default function UserCard({ user, onClick }) {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center",
             display: "block",
           }}
         />
       </Box>
 
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-        <Typography variant="subtitle1" fontWeight="bold">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography sx={{ fontSize: 16, fontWeight: "bold" }}>
           {capitalizeWords(user.name)} {capitalizeWords(user.surname)}
         </Typography>
 
-        <Typography variant="subtitle2" color="text.secondary">
+        <Typography color="text.secondary" sx={{ fontSize: 14 }}>
           {user.username}
         </Typography>
       </Box>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography, Grid } from "@mui/material";
 
 import { getAllUsers } from "../../services/api";
 import AuthContext from "../../services/auth.context";
@@ -10,6 +10,7 @@ import ErrorDialog from "../../components/shared/ErrorDialog";
 
 export default function Users() {
   const { token, loading: authLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,17 +32,8 @@ export default function Users() {
 
   useEffect(() => {
     if (!token) return;
-
-    let cancelled = false;
-
     fetchUsers();
-
-    return () => {
-      cancelled = true;
-    };
   }, [token]);
-
-  const navigate = useNavigate();
 
   const handleUserClick = (userId) => {
     navigate(`/users/${userId}`);
@@ -52,11 +44,10 @@ export default function Users() {
       <Box
         sx={{
           flexGrow: 1,
-          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: "transparent",
+          minHeight: "80vh",
         }}
       >
         <CircularProgress />
@@ -64,64 +55,43 @@ export default function Users() {
     );
   }
 
-  if (!users) return null;
-
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {users.length > 0 ? (
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                md: "repeat(3, 1fr)",
-              },
-              rowGap: 8,
-              columnGap: 16,
-              width: "100%",
-            }}
+    <Box sx={{ width: "100%", p: 4 }}>
+      {users.length > 0 ? (
+        <Grid
+          container
+          spacing={3}
+          justifyContent="center"
+          sx={{ columnGap: 10, rowGap: 5 }}
+        >
+          {users.map((u) => (
+            <Grid key={u.id}>
+              <UserCard user={u} onClick={() => handleUserClick(u.id)} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: 200,
+          }}
+        >
+          <Typography
+            sx={{ color: "#3e0b00", fontWeight: "bold", fontSize: 20 }}
           >
-            {users.map((u) => (
-              <UserCard
-                key={u.id}
-                user={u}
-                onClick={() => handleUserClick(u.id)}
-              />
-            ))}
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: 50,
-            }}
-          >
-            <Typography sx={{ color: "#3e0b00", fontWeight: "bold" }}>
-              No users registered
-            </Typography>
-          </Box>
-        )}
+            No users registered
+          </Typography>
+        </Box>
+      )}
 
-        <ErrorDialog
-          open={errorDialogOpen}
-          onClose={() => setErrorDialogOpen(false)}
-          message={errorMessage}
-        />
-      </Box>
+      <ErrorDialog
+        open={errorDialogOpen}
+        onClose={() => setErrorDialogOpen(false)}
+        message={errorMessage}
+      />
     </Box>
   );
 }
