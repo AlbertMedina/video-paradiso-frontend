@@ -14,6 +14,10 @@ export default function SearchBox({
   const [internalValue, setInternalValue] = useState(value || "");
 
   useEffect(() => {
+    setInternalValue(value || "");
+  }, [value]);
+
+  useEffect(() => {
     if (internalValue === value) return;
 
     const handler = setTimeout(() => {
@@ -49,6 +53,7 @@ export default function SearchBox({
           "& .MuiInputBase-input": {
             fontSize,
             py: 0,
+            color: "#3e0b00",
           },
         }}
       />
