@@ -64,7 +64,8 @@ export default function AdminHome() {
     return (
       <Box
         sx={{
-          minHeight: "100vh",
+          flexGrow: 1,
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

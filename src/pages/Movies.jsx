@@ -109,7 +109,7 @@ export default function Movies() {
       <Box
         sx={{
           flexGrow: 1,
-          minHeight: "100%",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

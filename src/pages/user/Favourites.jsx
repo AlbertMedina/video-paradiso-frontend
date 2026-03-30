@@ -48,7 +48,8 @@ export default function Favourites() {
     return (
       <Box
         sx={{
-          minHeight: "100vh",
+          flexGrow: 1,
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -65,26 +66,26 @@ export default function Favourites() {
   return favourites.length > 0 ? (
     <Box
       sx={{
-        maxWidth: 1800,
+        maxWidth: "80%",
         mx: "auto",
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
-        height: "85vh",
         justifyContent: "space-between",
       }}
     >
       <Grid
         container
-        spacing={6}
+        spacing={4}
         justifyContent="center"
-        sx={{ mt: 6, columnGap: 16 }}
+        sx={{ columnGap: 16 }}
       >
         {favourites.map((f) => (
           <Grid key={f.id}>
             <MovieCard
               movie={f.movie}
               onClick={() => handleFavouriteClick(f.movie.id)}
+              width={180}
             />
           </Grid>
         ))}
