@@ -19,7 +19,7 @@ import { capitalizeWords } from "../utils/stringUtils";
 import MovieCard from "../components/movies/MovieCard";
 import Selector from "../components/movies/Selector.jsx";
 import SearchBox from "../components/movies/SearchBox";
-import SortToggle from "../components/movies/SortToggle";
+import SortSelector from "../components/movies/SortSelector.jsx";
 import HideUnavailableCheckbox from "../components/movies/HideUnavailableCheckbox.jsx";
 import AddMovieCard from "../components/admin/AddMovieCard";
 import AddMovieModal from "../components/admin/AddMovieModal";
@@ -133,6 +133,11 @@ export default function Movies() {
     })),
   ];
 
+  const sortOptions = [
+    { label: "Title", value: "TITLE" },
+    { label: "Rating", value: "RATING" },
+  ];
+
   return (
     <Box
       sx={{
@@ -173,10 +178,11 @@ export default function Movies() {
         </Box>
 
         <Box sx={{ display: "flex", gap: 2 }}>
-          <SortToggle
-            sortBy={sortBy}
+          <SortSelector
+            options={sortOptions}
+            value={sortBy}
             ascending={ascending}
-            onSortByChange={(newSort) => setSortBy(newSort)}
+            onValueChange={(newSort) => setSortBy(newSort)}
             onToggleOrder={() => setAscending(!ascending)}
             width={150}
           />
