@@ -25,8 +25,12 @@ export default function UserDetailsCard({ user, canDelete, onDelete }) {
             right: 16,
           }}
         >
-          <IconButton onClick={onDelete} size="large" sx={{ color: "#f5f5f5" }}>
-            <DeleteIcon fontSize="large" />
+          <IconButton
+            onClick={onDelete}
+            size="medium"
+            sx={{ color: "#f5f5f5" }}
+          >
+            <DeleteIcon fontSize="medium" />
           </IconButton>
         </Box>
       )}
@@ -38,7 +42,7 @@ export default function UserDetailsCard({ user, canDelete, onDelete }) {
               width: "100%",
               overflow: "hidden",
               borderRadius: 2,
-              maxWidth: 300,
+              maxWidth: 250,
             }}
           >
             <Box
@@ -66,17 +70,16 @@ export default function UserDetailsCard({ user, canDelete, onDelete }) {
             }}
           >
             <Typography
-              variant="h4"
               gutterBottom
-              sx={{ wordBreak: "break-word" }}
+              sx={{ fontSize: 32, wordBreak: "break-word" }}
             >
               {capitalizeWords(user.name)} {capitalizeWords(user.surname)}
             </Typography>
 
-            <Typography sx={{ wordBreak: "break-word" }}>
+            <Typography sx={{ fontSize: 18, wordBreak: "break-word" }}>
               <strong>Username:</strong> {user.username}
             </Typography>
-            <Typography sx={{ wordBreak: "break-word" }}>
+            <Typography sx={{ fontSize: 18, wordBreak: "break-word" }}>
               <strong>Email:</strong> {user.email}
             </Typography>
           </Box>

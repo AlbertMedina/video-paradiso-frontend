@@ -36,15 +36,7 @@ export default function UserDetails() {
   };
 
   useEffect(() => {
-    if (!token) return;
-
-    let cancelled = false;
-
-    fetchUserDetails();
-
-    return () => {
-      cancelled = true;
-    };
+    if (token && userId) fetchUserDetails();
   }, [token, userId]);
 
   const fetchRentals = async () => {

@@ -33,15 +33,7 @@ export default function Me() {
   };
 
   useEffect(() => {
-    if (!token) return;
-
-    let cancelled = false;
-
-    fetchMyDetails();
-
-    return () => {
-      cancelled = true;
-    };
+    if (token) fetchMyDetails();
   }, [token]);
 
   const fetchMyRentals = async () => {
