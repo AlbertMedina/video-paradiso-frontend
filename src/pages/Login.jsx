@@ -50,8 +50,7 @@ export default function Login() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "100%",
-          maxWidth: 600,
+          maxWidth: 500,
           bgcolor: "#f5f5f5",
           color: "#3e0b00",
           borderRadius: 4,
@@ -66,8 +65,8 @@ export default function Login() {
           onSubmit={handleLogin}
           sx={{
             width: "100%",
-            "& .MuiInputBase-input": { fontSize: "16px" },
-            "& .MuiInputLabel-root": { fontSize: "16px" },
+            "& .MuiInputBase-input": { fontSize: 16 },
+            "& .MuiInputLabel-root": { fontSize: 16 },
           }}
         >
           <TextField
@@ -91,7 +90,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           {error && (
-            <Typography color="error" variant="body2" sx={{ mt: 1 }}>
+            <Typography color="error" sx={{ mt: 1, fontSize: 14 }}>
               {error}
             </Typography>
           )}

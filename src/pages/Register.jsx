@@ -51,8 +51,7 @@ export default function Register() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "100%",
-          maxWidth: 600,
+          maxWidth: 500,
           bgcolor: "#f5f5f5",
           color: "#3e0b00",
           borderRadius: 4,
@@ -67,8 +66,8 @@ export default function Register() {
           onSubmit={handleRegister}
           sx={{
             width: "100%",
-            "& .MuiInputBase-input": { fontSize: "16px" },
-            "& .MuiInputLabel-root": { fontSize: "16px" },
+            "& .MuiInputBase-input": { fontSize: 16 },
+            "& .MuiInputLabel-root": { fontSize: 16 },
           }}
         >
           <TextField
