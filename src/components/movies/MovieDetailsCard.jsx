@@ -114,12 +114,11 @@ export default function MovieDetailsCard({
         <Grid>
           <Box
             sx={{
-              width: "100%",
+              width: 300,
               aspectRatio: "2 / 3",
               overflow: "hidden",
               borderRadius: 2,
               boxShadow: 3,
-              width: 300,
             }}
           >
             {isAdmin ? (
